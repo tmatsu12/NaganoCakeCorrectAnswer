@@ -6,5 +6,7 @@ Rails.application.routes.draw do
   }
   namespace :admin do
     get 'top' => 'homes#top', as: 'top'
+    resources :orders, only: [:index, :show, :update] do
+    end
   end
 end
