@@ -1,5 +1,6 @@
 class Admin::ItemsController < ApplicationController
   before_action :authenticate_admin!
+  before_action :ensure_item, only: [:show, :edit, :update]
 
   def new
   end
@@ -19,5 +20,11 @@ class Admin::ItemsController < ApplicationController
   end
 
   def edit
+  end
+
+  private
+
+  def ensure_item
+    @item = Item.find(params[:id])
   end
 end
