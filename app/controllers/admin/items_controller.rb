@@ -3,6 +3,7 @@ class Admin::ItemsController < ApplicationController
   before_action :ensure_item, only: [:show, :edit, :update]
 
   def new
+    @item = Item.new
   end
 
   def index
