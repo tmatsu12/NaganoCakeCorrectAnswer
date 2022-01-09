@@ -4,6 +4,10 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :orders
+
+  scope :only_active, -> { where(is_active: true) }
+
   validates :last_name, presence: true
   validates :first_name, presence: true
   validates :last_name_kana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/ }
