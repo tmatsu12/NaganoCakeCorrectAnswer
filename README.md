@@ -1,24 +1,11 @@
-# README
+# チーム開発題材「Nagano Cake」の模範解答の模写
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 目的
+DMM WEBCAMPの２ヶ月目に、ECサイト「Nagano Cake」をチーム開発した。<br>
+2ヶ月目最終日に模範解答をもらったものの、あまり熟読する時間もなく３ヶ月目のPF制作期間になってしまった。<br>
+そこで、記憶のまだ新しいうちに復習と勉強を兼ねて模範解答を模写することにした
 
-Things you may want to cover:
 
-* Ruby version
 
-* System dependencies
 
-* Configuration
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
