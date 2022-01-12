@@ -14,4 +14,8 @@ Rails.application.routes.draw do
     resources :orders, only: [:index, :show, :update] do
     end
   end
+  devise_for :customers, controllers: {
+    sessions: 'public/sessions',
+    registrations: 'public/registrations',
+  }
 end
