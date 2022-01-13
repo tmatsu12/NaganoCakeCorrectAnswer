@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  namespace :public do
+    get 'items/top'
+    get 'items/show'
+    get 'items/index'
+  end
   # 管理者用
   # URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
@@ -18,4 +23,8 @@ Rails.application.routes.draw do
     sessions: 'public/sessions',
     registrations: 'public/registrations',
   }
+  scope module: :public do
+    root 'items#top'
+    resources :items, only: [:index, :show]
+  end
 end
