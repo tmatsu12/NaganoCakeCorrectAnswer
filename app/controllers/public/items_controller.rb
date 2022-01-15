@@ -5,6 +5,9 @@ class Public::ItemsController < ApplicationController
   end
 
   def show
+    @item = Item.where_genre_active.find(params[:id])
+    @genres = Genre.only_active
+    @cart_item = CartItem.new
   end
 
   def index
