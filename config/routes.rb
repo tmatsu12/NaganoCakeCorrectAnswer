@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   namespace :public do
+    get 'customers/edit'
+    get 'customers/show'
+    get 'customers/unsubscribe'
+  end
+  namespace :public do
     get 'cart_items/index'
   end
   namespace :public do
@@ -28,6 +33,7 @@ Rails.application.routes.draw do
   }
   scope module: :public do
     root 'items#top'
+    get 'customers/mypage' => 'customers#show', as: 'mypage'
     resources :items, only: [:index, :show]
     resources :cart_items, only: [:index]
   end
