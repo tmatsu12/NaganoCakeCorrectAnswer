@@ -34,6 +34,9 @@ Rails.application.routes.draw do
   scope module: :public do
     root 'items#top'
     get 'customers/mypage' => 'customers#show', as: 'mypage'
+    get 'customers/information/edit' => 'customers#edit', as: 'edit_information'
+    get 'customers/unsubscribe' => 'customers#unsubscribe', as: 'confirm_unsubscribe'
+    patch 'customers/information' => 'customers#update', as: 'update_information'
     resources :items, only: [:index, :show]
     resources :cart_items, only: [:index]
   end
