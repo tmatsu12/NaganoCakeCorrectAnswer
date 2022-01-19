@@ -1,17 +1,4 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'customers/edit'
-    get 'customers/show'
-    get 'customers/unsubscribe'
-  end
-  namespace :public do
-    get 'cart_items/index'
-  end
-  namespace :public do
-    get 'items/top'
-    get 'items/show'
-    get 'items/index'
-  end
   # 管理者用
   # URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
@@ -39,5 +26,6 @@ Rails.application.routes.draw do
     patch 'customers/information' => 'customers#update', as: 'update_information'
     resources :items, only: [:index, :show]
     resources :cart_items, only: [:index]
+    resources :orders, only: [:new, :index, :create, :show]
   end
 end
