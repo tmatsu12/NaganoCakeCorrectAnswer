@@ -5,6 +5,7 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :orders
+  has_many :cart_items, dependent: :destroy
 
   scope :only_active, -> { where(is_active: true) }
 
