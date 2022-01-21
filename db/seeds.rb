@@ -91,3 +91,25 @@ Customer.create!(
     }
   ]
   )
+Address.create!(
+  [
+    {
+      customer_id: 1,
+      name: "渋谷校",
+      postal_code: "1500041",
+      destination: "東京都渋谷区神南1-19-11 パークウェースクエア2 4階"
+    },
+    {
+      customer_id: 1,
+      name: "新宿校",
+      postal_code: "1600022",
+      destination: "東京都新宿区新宿2-5-10 成信ビル 4階"
+    },
+    {
+      customer_id: 1,
+      name: "難波校",
+      postal_code: "5420076",
+      destination: "大阪府大阪市中央区難波4-7-14 難波フロントビル 4階"
+    }
+  ]
+  )

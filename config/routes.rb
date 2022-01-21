@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  namespace :public do
+    get 'addresses/index'
+    get 'addresses/edit'
+  end
+  namespace :public do
+    get 'adresses/index'
+    get 'adresses/edit'
+  end
   # 管理者用
   # URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
@@ -24,6 +32,7 @@ Rails.application.routes.draw do
     get 'customers/information/edit' => 'customers#edit', as: 'edit_information'
     get 'customers/unsubscribe' => 'customers#unsubscribe', as: 'confirm_unsubscribe'
     patch 'customers/information' => 'customers#update', as: 'update_information'
+    resources :addresses, only: [:index, :create, :edit, :update, :destroy]
     resources :items, only: [:index, :show]
     resources :cart_items, only: [:index]
     resources :orders, only: [:new, :index, :create, :show]
