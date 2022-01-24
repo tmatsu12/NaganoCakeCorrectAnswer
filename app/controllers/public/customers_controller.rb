@@ -8,6 +8,14 @@ class Public::CustomersController < ApplicationController
   def show
   end
 
+  def update
+    if @customer.update(customer_params)
+      redirect_to mypage_path, notice: '会員情報の更新が完了しました。'
+    else
+      render :edit
+    end
+  end
+
   def unsubscribe
   end
 
@@ -15,5 +23,9 @@ class Public::CustomersController < ApplicationController
 
   def set_current_customer
     @customer = current_customer
+  end
+
+  def customer_params
+    params.require(:customer).permit(:last_name, :first_name, :first_name_kana, :last_name_kana, :email, :postal_code, :address, :telephone_number)
   end
 end
