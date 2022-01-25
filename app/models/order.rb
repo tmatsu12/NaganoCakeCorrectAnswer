@@ -13,4 +13,17 @@ class Order < ApplicationRecord
 
   enum payment_method: { credit_card: 0, transfer: 1 }
   enum status: { waiting_deposit: 0, confirm_deposit: 1, in_production: 2, preparing_shipment: 3, shipped: 4 }
+
+  def get_shipping_informations_from(resource)
+    class_name = resource.class.name
+    if class_name == 'Customer' # resource: Customer
+      self.postal_code = resource.postal_code
+      self.destination = resource.address
+      self.name = resource.full_name
+    elsif class_name == 'Address' # resource: Address
+      self.postal_code = resource.postal_code
+      self.destination = resource.destination
+      self.name = resource.name
+    end
+  end
 end
