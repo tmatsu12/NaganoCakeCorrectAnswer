@@ -26,4 +26,24 @@ class Order < ApplicationRecord
       self.name = resource.name
     end
   end
+
+  def create_order_details(customer)
+    unless order_details.first
+      cart_items = customer.cart_items.includes(:item)
+      cart_items.each do |cart_item|
+        item = cart_item.item
+        OrderDetail.create!(
+          order_id: id,
+          item_id: item.id,
+          price: item.with_tax_price,
+          amount: cart_item.amount
+        )
+      end
+      cart_items.destroy_all
+    end
+  end
+
+  def are_all_details_completed?
+    (order_details.completed.count == order_details.count) ? true : false
+  end
 end
