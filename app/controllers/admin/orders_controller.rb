@@ -1,5 +1,6 @@
 class Admin::OrdersController < ApplicationController
   before_action :authenticate_admin!
+  before_action :ensure_order, only: [:show, :update]
 
   def index
     if params[:customer_id]
@@ -13,5 +14,17 @@ class Admin::OrdersController < ApplicationController
   end
 
   def show
+    @order_details = @order.order_details.includes(:item)
+    @customer = @order.customer
+  end
+
+  private
+
+  def order_params
+    params.require(:order).permit(:status)
+  end
+
+  def ensure_order
+    @order = Order.find(params[:id])
   end
 end
