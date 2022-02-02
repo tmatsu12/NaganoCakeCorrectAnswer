@@ -18,6 +18,13 @@ class Admin::OrdersController < ApplicationController
     @customer = @order.customer
   end
 
+  def update
+    if @order.update(order_params) && @order.confirm_deposit?
+      @order.order_details.update_all(making_status: 1)
+    end
+    redirect_to admin_order_path(@order)
+  end
+
   private
 
   def order_params
